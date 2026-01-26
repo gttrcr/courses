@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Inserisci Nota</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 50px; text-align: center; }
+    h1 { color: #2c3e50; }
+    textarea { width: 400px; height: 100px; }
+    button { padding: 10px 20px; margin-top: 10px; cursor: pointer; }
+    p { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Inserisci una nuova nota</h1>
+
+  <textarea id="noteText" placeholder="Scrivi qui la tua nota..."></textarea>
+  <br>
+  <button onclick="sendNote()">Invia</button>
+
+  <p id="result"></p>
+
+  <script>
+    function sendNote() {
+      const text = document.getElementById("noteText").value;
+
+      fetch("/notes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ text: text })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("result").textContent = "Nota inserita correttamente!";
+        document.getElementById("noteText").value = "";
+      })
+      .catch(error => {
+        document.getElementById("result").textContent = "Errore nell'invio";
+      });
+    }
+  </script>
+</body>
+</html>

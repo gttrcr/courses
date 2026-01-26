@@ -1,0 +1,17 @@
+services:
+  db:
+    build: ./db
+    volumes:
+      - data:/data
+  api:
+    build: ./api
+    ports:
+      - "5000:5000"
+    volumes:
+      - data:/data
+#  web:
+#    build: ./web
+#    ports:
+#      - "8080:80"
+volumes:
+  data:

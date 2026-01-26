@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ITS Final Lab</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 50px; text-align: center; }
+    h1 { color: #2c3e50; }
+    button { padding: 10px 20px; margin-top: 20px; cursor: pointer; }
+    pre { text-align: left; margin: 20px auto; max-width: 600px; background: #f4f4f4; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Benvenuti al Final Lab ITS!</h1>
+  <p>Questa è la landing page dell'API container.</p>
+
+  <button onclick="loadNotes()">Mostra note</button>
+  <pre id="notes"></pre>
+
+  <script>
+    function loadNotes() {
+      fetch('/notes')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('notes').textContent = JSON.stringify(data, null, 2);
+        });
+    }
+  </script>
+</body>
+</html>
