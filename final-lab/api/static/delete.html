@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Inserisci Nota</title>
+  <title>Elimina Nota</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -33,11 +33,11 @@
 </head>
 
 <body>
-  <h1>Inserisci una nuova nota</h1>
+  <h1>Inserisci il testo della nota da eliminare</h1>
 
-  <textarea id="noteText" placeholder="Scrivi qui la tua nota..."></textarea>
+  <textarea id="noteText" placeholder="Scrivi qui la tua nota da eliminare..."></textarea>
   <br>
-  <button onclick="sendNote()">Invia</button>
+  <button onclick="sendNote()">Elimina</button>
 
   <p id="result"></p>
 
@@ -46,7 +46,7 @@
       const text = document.getElementById("noteText").value;
 
       fetch("/notes", {
-        method: "PUT",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json"
         },
@@ -54,7 +54,7 @@
       })
         .then(response => response.json())
         .then(data => {
-          document.getElementById("result").textContent = "Nota inserita correttamente!";
+          document.getElementById("result").textContent = "Nota eliminata correttamente!";
           document.getElementById("noteText").value = "";
         })
         .catch(error => {

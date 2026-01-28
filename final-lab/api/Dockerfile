@@ -1,17 +1,12 @@
-#FROM ubuntu:latest
-#FROM python:3.11-alpine
-#FROM python:3
 FROM python:3.12-alpine
 
 RUN apk add --no-cache sqlite sqlite-dev
 
 WORKDIR /app
 
-#RUN apt -y install python3-pip
 RUN pip install --upgrade pip
 RUN pip install flask
 RUN pip install -U flask-cors
-#RUN pip install python3
 
 COPY app.py .
 COPY static/ ./static/

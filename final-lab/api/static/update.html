@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Inserisci Nota</title>
+  <title>Aggiorna Nota</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -33,28 +33,34 @@
 </head>
 
 <body>
-  <h1>Inserisci una nuova nota</h1>
+  <h1>Inserisci la nota che vuoi aggiornare</h1>
 
-  <textarea id="noteText" placeholder="Scrivi qui la tua nota..."></textarea>
+  <textarea id="oldNoteText" placeholder="Scrivi qui la tua nota..."></textarea>
   <br>
-  <button onclick="sendNote()">Invia</button>
+
+  <h1>Inserisci il nuovo testo della nota</h1>
+  <textarea id="newNoteText" placeholder="Scrivi qui la tua nota..."></textarea>
+  <br>
+  
+  <button onclick="sendNote()">Aggiorna</button>
 
   <p id="result"></p>
 
   <script>
     function sendNote() {
-      const text = document.getElementById("noteText").value;
+      const old_text = document.getElementById("oldNoteText").value;
+      const new_text = document.getElementById("newNoteText").value;
 
       fetch("/notes", {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ text: text })
+        body: JSON.stringify({ old_text: old_text, new_text: new_text })
       })
         .then(response => response.json())
         .then(data => {
-          document.getElementById("result").textContent = "Nota inserita correttamente!";
+          document.getElementById("result").textContent = "Nota aggiornata correttamente!";
           document.getElementById("noteText").value = "";
         })
         .catch(error => {
