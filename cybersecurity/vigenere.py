@@ -11,7 +11,7 @@ def vigenere_encrypt(plaintext, key, alphabet):
             ciphertext += alphabet[c]
             key_index += 1
         else:
-            ciphertext += char  # keep characters not in alphabet
+            ciphertext += char
 
     return ciphertext
 
@@ -32,3 +32,7 @@ def vigenere_decrypt(ciphertext, key, alphabet):
             plaintext += char
 
     return plaintext
+
+
+v = vigenere_encrypt("from the beginning", "lake", "abcdefghijklmnopqrstuvwxyz")
+print(v)
