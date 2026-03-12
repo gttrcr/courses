@@ -1,0 +1,2 @@
+Per ncat con --ssl (versioni pre-2014 come 6.47), usa Nmap per triggerare una race condition: nmap -nvv -r -Pn -sS -p PORT --script=ssl* TARGET.
+Questo causa use-after-free e segfault in OpenSSL durante handshake multipli.
