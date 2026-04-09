@@ -5,5 +5,6 @@ int main()
 	int *ptr = malloc(sizeof(int));
 	*ptr = 42;
 	free(ptr);
-	printf("%d\n", *ptr);
+	ptr = NULL;
+	printf("%c\n", (char)(NULL));
 }
