@@ -1,0 +1,8 @@
+[Unit]
+Description=Alive Monitor Service
+After=network.target
+[Service]
+ExecStart=/usr/local/bin/its_alive.sh
+Restart=always
+[Install]
+WantedBy=multi-user.target

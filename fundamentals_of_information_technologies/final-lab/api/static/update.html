@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Aggiorna Nota</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    textarea {
+      width: 400px;
+      height: 100px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    p {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Inserisci la nota che vuoi aggiornare</h1>
+
+  <textarea id="oldNoteText" placeholder="Scrivi qui la tua nota..."></textarea>
+  <br>
+
+  <h1>Inserisci il nuovo testo della nota</h1>
+  <textarea id="newNoteText" placeholder="Scrivi qui la tua nota..."></textarea>
+  <br>
+  
+  <button onclick="sendNote()">Aggiorna</button>
+
+  <p id="result"></p>
+
+  <script>
+    function sendNote() {
+      const old_text = document.getElementById("oldNoteText").value;
+      const new_text = document.getElementById("newNoteText").value;
+
+      fetch("/notes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ old_text: old_text, new_text: new_text })
+      })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("result").textContent = "Nota aggiornata correttamente!";
+          document.getElementById("noteText").value = "";
+        })
+        .catch(error => {
+          document.getElementById("result").textContent = "Errore nell'invio";
+        });
+    }
+  </script>
+</body>
+
+</html>
