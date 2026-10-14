@@ -1,0 +1,4 @@
+Codice A (12 cifre, manca il checksum): 400638133393
+Codice B (12 cifre, manca il checksum): 629104150021
+ 
+Calcola la 13esima cifra di controllo per entrambi (algoritmo GTIN-13).

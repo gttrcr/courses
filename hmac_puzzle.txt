@@ -1,0 +1,6 @@
+Messaggio: Se l'HMAC e' valido, l'ultima parola di questa frase e': corallo
+Chiave: supersegreta
+HMAC-SHA256 atteso: 80ddb290ad4119130878d1bf772b1156c2197c0095468e61568e8f8e3b3e3130
+ 
+Verifica l'HMAC con openssl dgst -sha256 -hmac. Se combacia, il
+messaggio e' autentico: l'ultima parola e' parte della flag finale.

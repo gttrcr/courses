@@ -1,0 +1,2 @@
+File numero 4 - contenuto placeholder generato il 2026-10-14
+# FLAG2{integrity_broken}

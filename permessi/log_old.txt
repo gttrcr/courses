@@ -1,0 +1,1 @@
+contenuto di log_old.txt
